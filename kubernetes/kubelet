@@ -1,0 +1,37 @@
+###
+# kubernetes kubelet (minion) config
+
+# The address for the info server to serve on (set to 0.0.0.0 or "" for all interfaces)
+#KUBELET_ADDRESS="--address=0.0.0.0"
+
+# The port for the info server to serve on
+# KUBELET_PORT="--port=10250"
+
+# You may leave this blank to use the actual hostname
+KUBELET_HOSTNAME="--hostname_override=192.168.76.233"
+
+# location of the api-server
+# KUBELET_API_SERVER="--api_servers=http://:8080"
+
+# pod infrastructure container
+KUBELET_POD_INFRA_CONTAINER=""
+
+#--experimental-allowed-unsafe-sysctls=net.*,kernel.shm*,kernel.msg*,kernel.sem,fs.mqueue.* \
+#--eviction-hard=nodefs.available<1% \
+# --image-gc-high-threshold=75 --image-gc-low-threshold=65 \
+
+# Add your own!
+#--eviction-hard= \
+#--pod-manifest-path=/etc/kubernetes/manifests \
+#--config=/etc/kubernetes/config-test.yaml \
+#KUBELET_ARGS="--network-plugin=cni --cni-bin-dir=/home/xiaoju/didicloud/cni-plugins/bin --cni-conf-dir=/home/xiaoju/didicloud/cni-plugins/conf --kubeconfig=/etc/kubernetes/token_file --log-dir=/var/log/kubernetes --stderrthreshold=3  --cluster-dns= --cluster-domain=cluster.local --require-kubeconfig=true"
+
+KUBELET_ARGS="--cert-dir=/etc/kubernetes/cert \
+--pod-infra-container-image=register-gj.xiaojukeji.com/library/pause:latest \
+--log-dir=/var/log/kubernetes --stderrthreshold=3 \
+--kubeconfig=/etc/kubernetes/kubeconfig/kubelet.kubeconfig \
+--allowed-unsafe-sysctls=net.*,kernel.shm*,kernel.msg*,kernel.sem,fs.mqueue.* \
+--network-plugin=cni --cni-bin-dir=/etc/cni/bin --cni-conf-dir=/etc/cni/conf \
+--cluster-dns=10.254.0.2 \
+--feature-gates=KubeletPluginsWatcher=true \
+--cgroup-driver=systemd"

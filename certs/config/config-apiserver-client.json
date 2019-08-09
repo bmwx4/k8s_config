@@ -1,0 +1,18 @@
+{
+    "CN": "kubernetes",
+    "hosts": [""],
+    "key": {
+        "algo": "ecdsa",
+        "size": 256
+    },
+    "names": [
+        {
+            "C": "CN",
+            "ST": "BJ",
+            "L": "BJ",
+            "O": "system:masters",
+            "OU": "apiserver client"
+        }
+    ]
+}
+

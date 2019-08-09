@@ -1,0 +1,8 @@
+###
+# kubernetes scheduler config
+
+# default config should be adequate
+
+# Add your own!
+KUBE_SCHEDULER_ARGS="--port=10251 --leader-elect=true \
+--kubeconfig=/etc/kubernetes/kubeconfig/kube-scheduler.kubeconfig"

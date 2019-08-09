@@ -1,0 +1,15 @@
+###
+# The following values are used to configure the kubernetes controller-manager
+
+# defaults from config and apiserver should be adequate
+
+# Add your own!
+#KUBE_CONTROLLER_MANAGER_ARGS="--port=10252 --node-monitor-grace-period=10s --node-monitor-period=5s --pod-eviction-timeout=1m0s"
+
+KUBE_CONTROLLER_MANAGER_ARGS="--port=10252 --service-cluster-ip-range=10.254.0.0/16 \
+--node-monitor-grace-period=40s --node-monitor-period=5s \
+--kubeconfig=/etc/kubernetes/kubeconfig/kube-controller-manager.kubeconfig \
+--cluster-signing-cert-file=/etc/kubernetes/cert/ca.pem \
+--cluster-signing-key-file=/etc/kubernetes/cert/ca-key.pem  \
+--service-account-private-key-file=/etc/kubernetes/cert/ca-key.pem \
+--root-ca-file=/etc/kubernetes/cert/ca.pem --leader-elect=true"
